@@ -1,0 +1,10 @@
+*.egg-info/
+*.pyc
+.tox/
+app_media/
+app_static/
+db.sqlite
+dist/
+build/
+docs/_build/
+local_settings.py

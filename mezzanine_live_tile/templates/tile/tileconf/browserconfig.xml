@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+{% load static mezzanine_tags tile_tags %}
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="{% static "tile/images/small.png" %}"/>
+      <square150x150logo src="{% static "tile/images/medium.png" %}"/>
+      <wide310x150logo src="{% static "tile/images/wide.png" %}"/>
+      <square310x310logo src="{% static "tile/images/large.png" %}"/>
+      <TileColor>#{{settings.TILE_COLOR}}</TileColor>
+    </tile>
+    <notification>
+      {% counter settings.LIVE_TILE_UPDATES_COUNT as uris %}
+      {% for uri in uris %}
+      {% if forloop.first %}
+      <polling-uri  src="{% url "tile:notifications" uri %}"/>
+      {% else %}
+      <polling-uri{{forloop.counter}} src="{% url "tile:notifications" uri %}"/>
+      {% endif %}
+      {% endfor %}
+      <frequency>{{settings.UPDATE_FREQUENCY}}</frequency>
+      <cycle>{{settings.CYCLE_OPTION}}</cycle>
+    </notification>
+  </msapplication>
+</browserconfig>

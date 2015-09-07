@@ -1,0 +1,29 @@
+<tile>
+<visual lang='en-US' version='2'>
+{% load static mezzanine_tags tile_tags %}
+<binding template="TileSquare150x150Text01" fallback="TileSquareText01" branding="{{settings.TILE_BRANDING}}">
+  <text id="1">{{notification.headline}}</text>
+  {% wrap_text notification.body_text 3 16 as lines %}
+  {% for line in lines %}
+  {% text_node_for line %}
+  {% endfor %}
+</binding>
+
+<binding template="TileWide310x150Text01" fallback="TileWideText01" branding="{{settings.TILE_BRANDING}}">
+  <text id="1">{{notification.headline}}</text>
+  {% wrap_text notification.body_text 4 28 as lines %}
+  {% for line in lines %}
+  {% text_node_for line %}
+  {% endfor %}
+</binding>  
+
+<binding template="TileSquare310x310Text01" branding="{{settings.TILE_BRANDING}}">
+  <text id="1">{{notification.headline}}</text>
+  {% wrap_text notification.body_text 9 36 as lines %}
+  {% for line in lines %}
+  {% text_node_for line  %}
+  {% endfor %}
+</binding>  
+
+</visual>
+</tile>
